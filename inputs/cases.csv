@@ -1,0 +1,3 @@
+case_id,hot_inlet_C,cold_inlet_C,hot_flow_kg_s,cold_flow_kg_s,hot_cp_J_kgK,cold_cp_J_kgK,U_W_m2K,heat_area_m2,solute_in_mol_m3,mass_K_m_s,mass_area_m2,source_flow_m3_s
+case_1,90,20,1,1.2,4180,4180,500,5,2,0.0002,5,0.001
+case_2,110,25,1.5,1,4180,4180,600,8,3,0.00015,6,0.0012
