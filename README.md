@@ -1,7 +1,8 @@
 # Heat and Mass Exchanger
 
-This program reads exchanger cases, calculates heat and mass transfer, checks
-the balances, and saves the answers.
+I built a Python simulator that combines a counter-current effectiveness-NTU heat exchanger with a perfect-sink membrane mass-transfer model. It calculates heat duty, outlet temperatures, and solute transfer for each case, then reports energy and solute balance residuals.
+
+The heat model handles the equal heat-capacity-rate limit explicitly. Both supplied cases close the energy and solute balances to floating-point precision. The formulas assume positive stream flow rates and a positive inlet solute concentration.
 
 See the [engineering case study](https://mehnajjimy.com/projects/heat-mass-exchanger/),
 [calculation notes](NOTES.md), [sample cases](inputs/cases.csv), and
