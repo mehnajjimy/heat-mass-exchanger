@@ -3,6 +3,10 @@
 This program reads exchanger cases, calculates heat and mass transfer, checks
 the balances, and saves the answers.
 
+See the [engineering case study](https://mehnajjimy.com/projects/heat-mass-exchanger/),
+[calculation notes](NOTES.md), [sample cases](inputs/cases.csv), and
+[sample results](outputs/results.csv).
+
 ## Run
 
 ```bash
