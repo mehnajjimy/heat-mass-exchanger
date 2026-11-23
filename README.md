@@ -1,8 +1,8 @@
 # Heat and Mass Exchanger
 
-I built a Python simulator that combines a counter-current effectiveness-NTU heat exchanger with a perfect-sink membrane mass-transfer model. It calculates heat duty, outlet temperatures, and solute transfer for each case, then reports energy and solute balance residuals.
+In the first example, the hot stream entering the modeled exchanger at 90 °C leaves at 63.0 °C. The opposing stream warms from 20 °C to 42.5 °C. Both temperature changes correspond to 113 kW of heat transfer. The streams have different flow rates, so the same heat load produces different changes in temperature.
 
-The heat model handles the equal heat-capacity-rate limit explicitly. Both supplied cases close the energy and solute balances to floating-point precision. The formulas assume positive stream flow rates and a positive inlet solute concentration.
+The Python program runs two independent calculations for each input row. One predicts outlet temperatures for streams flowing in opposite directions. The other predicts how much dissolved material crosses a membrane into a perfect sink. The membrane calculation uses flow, transfer area and a fixed transfer coefficient. Outlet temperature from the heat calculation does not enter it.
 
 See the [engineering case study](https://mehnajjimy.com/projects/heat-mass-exchanger/),
 [calculation notes](NOTES.md), [sample cases](inputs/cases.csv), and
@@ -19,7 +19,11 @@ python3 main.py
 
 ## Results
 
-The files save inside this project's `outputs` folder:
+In the first membrane case, the inlet contains 2.00 mol of solute per cubic meter and the outlet contains 0.736 mol/m³. The balance compares the solute entering each second with the sum leaving in the outlet stream and crossing the membrane.
+
+The second example transfers 207 kW under different inlet conditions, flows and transfer area. Its hot- and cold-side heat balances differ by about 6 × 10⁻¹¹ W. That residual measures arithmetic agreement between the two sides. An exchanger test would be needed to check the outlet predictions against measurements.
+
+The program writes both cases to:
 
 ```text
 outputs/results.csv
@@ -32,4 +36,4 @@ CSV is the default input. To use Excel, change `INPUT_FILE` in `main.py` to:
 INPUT_FILE = "inputs/cases.xlsx"
 ```
 
-Short comments beside the Python code explain what each block does.
+When the two streams have equal heat-capacity rates, the general counter-current formula divides by zero. The code uses its limiting expression for that case. Both models assume positive flow rates, and the membrane calculation assumes positive inlet solute concentration.
